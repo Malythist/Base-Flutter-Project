@@ -29,7 +29,9 @@ All flutter code is inside lib folder. Under it you will find 4 packages:
 1. Clone the repository.
 2. Ensure the project path contains only ASCII characters.
 3. From the project root, run:
-   ```flutter pub get```
+   ```
+   flutter pub get
+   ```
 4. If you encounter build issues after changing paths or dependencies, run:
    ```
    flutter clean
@@ -39,3 +41,4 @@ All flutter code is inside lib folder. Under it you will find 4 packages:
 ##### Important notes for Windows users!
 
 The project must be located in a path without non-ASCII characters (no Cyrillic, spaces are fine). Avoid placing the project inside Documents, especially if it is managed by OneDrive or Windows Controlled Folder Access. These restrictions are important for Flutter code generation, asset processing, and shader compilation.
+
