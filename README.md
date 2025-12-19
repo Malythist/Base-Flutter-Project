@@ -2,7 +2,7 @@
 
 ### Description
 
-This project is based on Clean Architecture concept and already contains:
+This project is based on the Clean Architecture concept and already contains:
 
 - All base classes and working architecture
 - Example screen with http request
@@ -10,12 +10,12 @@ This project is based on Clean Architecture concept and already contains:
 
 ### Project structure
 
-All flutter code is inside lib folder. Under it you will find 4 packages:
+All Flutter code is located inside the `lib` folder. Under it you will find 4 packages:
 
 - ```app``` - contains di, main and application files for initializations;
 - ```core``` - all base classes needed for architecture, tools and global extensions;
-- ```features``` - all screens (features) of application. You should create your new feature right here;
-- ```shared``` - design system, reused dialogs and views, user usecases, etc.
+- ```features``` - all screens (features) of the application. You should create your new feature right here;
+- ```shared``` - design system, reusable dialogs and views, shared usecases, etc.
 
 ### Build and requirements:
 
@@ -41,4 +41,5 @@ All flutter code is inside lib folder. Under it you will find 4 packages:
 ##### Important notes for Windows users!
 
 The project must be located in a path without non-ASCII characters (no Cyrillic, spaces are fine). Avoid placing the project inside Documents, especially if it is managed by OneDrive or Windows Controlled Folder Access. These restrictions are important for Flutter code generation, asset processing, and shader compilation.
+
 
