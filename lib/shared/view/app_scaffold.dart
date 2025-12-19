@@ -14,8 +14,16 @@ class AppScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
+      backgroundColor: scheme.background,
+      appBar: AppBar(
+        title: Text(title),
+        backgroundColor: scheme.surface,
+        foregroundColor: scheme.onSurface,
+        elevation: 0,
+      ),
       body: SafeArea(
         child: Padding(
           padding: padding,

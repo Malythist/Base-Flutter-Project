@@ -15,6 +15,8 @@ class ExampleScreen extends ConsumerWidget {
     final async = ref.watch(exampleControllerProvider);
     final controller = ref.read(exampleControllerProvider.notifier);
 
+    final scheme = Theme.of(context).colorScheme;
+
     return AppScaffold(
       title: '_example',
       body: async.when(
@@ -35,10 +37,29 @@ class ExampleScreen extends ConsumerWidget {
         },
         data: (items) => ListView.separated(
           itemCount: items.length,
-          separatorBuilder: (_, __) => const Divider(height: 1),
+          separatorBuilder: (_, __) => Divider(
+            height: 1,
+            color: Theme.of(context).dividerColor, // из нашей темы
+          ),
           itemBuilder: (_, i) => ListTile(
-            title: Text(items[i].title),
-            subtitle: Text('id: ${items[i].id}'),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 8),
+            title: Text(
+              items[i].title,
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: scheme.onSurface,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            subtitle: Text(
+              'id: ${items[i].id}',
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: scheme.onSurface.withOpacity(0.75),
+              ),
+            ),
+            tileColor: scheme.surface,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
           ),
         ),
       ),
