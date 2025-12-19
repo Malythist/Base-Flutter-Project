@@ -31,7 +31,9 @@ All Flutter code is located inside the `lib` folder. Under it you will find 4 pa
 3. From the project root, run:
    ```
    flutter pub get
+   flutter pub run build_runner build --delete-conflicting-outputs
    ```
+   And you good to go!
 4. If you encounter build issues after changing paths or dependencies, run:
    ```
    flutter clean
@@ -41,5 +43,6 @@ All Flutter code is located inside the `lib` folder. Under it you will find 4 pa
 ##### Important notes for Windows users!
 
 The project must be located in a path without non-ASCII characters (no Cyrillic, spaces are fine). Avoid placing the project inside Documents, especially if it is managed by OneDrive or Windows Controlled Folder Access. These restrictions are important for Flutter code generation, asset processing, and shader compilation.
+
 
 
