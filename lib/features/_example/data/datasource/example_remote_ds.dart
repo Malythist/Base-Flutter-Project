@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+
 import '../../../../core/network/api_config.dart';
 import '../dto/example_item_dto.dart';
 
@@ -14,19 +15,19 @@ class ExampleRemoteDataSourceImpl implements ExampleRemoteDataSource {
 
   ExampleRemoteDataSourceImpl(this._dio, this._config);
 
+  static const String API_METHOD = '/todos';
+
   @override
   Future<List<ExampleItemDto>> getItems() async {
-    final url = _config.baseUrl + '/todos';
-    print('REQUEST START');
+    final url = _config.baseUrl + API_METHOD;
     final res = await _dio.get(url);
-    print('REQUEST END ${res.statusCode}');
 
     final list = (res.data as List).cast<Map<String, dynamic>>();
+
     return list
         .map((e) => ExampleItemDto(
       id: e['id'] as int,
       title: e['title'] as String,
-    ))
-        .toList();
+    )).toList();
   }
 }
