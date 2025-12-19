@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'app_colors.dart';
+import 'app_typography.dart';
 
 class AppTheme {
   const AppTheme._();
@@ -7,25 +8,18 @@ class AppTheme {
   static ThemeData light() {
     final scheme = ColorScheme(
       brightness: Brightness.light,
-
       primary: AppColors.primaryLight,
       onPrimary: Colors.white,
-
       secondary: AppColors.secondaryLight,
       onSecondary: Colors.white,
-
       tertiary: AppColors.tertiaryLight,
       onTertiary: Colors.white,
-
       background: AppColors.grayLight50,
       onBackground: Colors.black,
-
       surface: AppColors.grayLight100,
       onSurface: Colors.black,
-
       surfaceVariant: AppColors.grayLight200,
       outline: AppColors.grayLight400,
-
       error: Colors.red,
       onError: Colors.white,
     );
@@ -35,31 +29,25 @@ class AppTheme {
       colorScheme: scheme,
       scaffoldBackgroundColor: scheme.background,
       dividerColor: AppColors.grayLight300,
+      textTheme: AppTypography.textTheme(onSurface: scheme.onSurface),
     );
   }
 
   static ThemeData dark() {
     final scheme = ColorScheme(
       brightness: Brightness.dark,
-
       primary: AppColors.primaryDark,
       onPrimary: Colors.black,
-
       secondary: AppColors.secondaryDark,
       onSecondary: Colors.black,
-
       tertiary: AppColors.tertiaryDark,
       onTertiary: Colors.black,
-
       background: AppColors.grayDark50,
       onBackground: Colors.white,
-
       surface: AppColors.grayDark100,
       onSurface: Colors.white,
-
       surfaceVariant: AppColors.grayDark200,
       outline: AppColors.grayDark400,
-
       error: Colors.redAccent,
       onError: Colors.black,
     );
@@ -69,6 +57,7 @@ class AppTheme {
       colorScheme: scheme,
       scaffoldBackgroundColor: scheme.background,
       dividerColor: AppColors.grayDark300,
+      textTheme: AppTypography.textTheme(onSurface: scheme.onSurface),
     );
   }
 }

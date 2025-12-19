@@ -38,31 +38,30 @@ class ExampleScreen extends ConsumerWidget {
         data: (items) => ListView.separated(
           itemCount: items.length,
           separatorBuilder: (_, __) => const SizedBox(height: 12),
-          itemBuilder: (_, i) => Container(
-            decoration: BoxDecoration(
-              color: scheme.surfaceVariant,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: ListTile(
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 8,
+          itemBuilder: (_, i) {
+            final scheme = Theme.of(context).colorScheme;
+            final textTheme = Theme.of(context).textTheme;
+
+            return Container(
+              decoration: BoxDecoration(
+                color: scheme.surfaceVariant,
+                borderRadius: BorderRadius.circular(12),
               ),
-              title: Text(
-                items[i].title,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: scheme.onSurface,
-                  fontWeight: FontWeight.w600,
+              child: ListTile(
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                title: Text(
+                  items[i].title,
+                  style: textTheme.titleMedium, // Bold_Text (16/22, medium)
+                ),
+                subtitle: Text(
+                  'id: ${items[i].id}',
+                  style: textTheme.labelMedium?.copyWith(
+                    color: scheme.onSurface.withOpacity(0.7),
+                  ), // Regular_Footnote (13/18)
                 ),
               ),
-              subtitle: Text(
-                'id: ${items[i].id}',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: scheme.onSurface.withOpacity(0.7),
-                ),
-              ),
-            ),
-          ),
+            );
+          },
         ),
       ),
     );

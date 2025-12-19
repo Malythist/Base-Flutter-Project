@@ -15,14 +15,18 @@ class AppScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
       backgroundColor: scheme.background,
       appBar: AppBar(
-        title: Text(title),
         backgroundColor: scheme.surface,
         foregroundColor: scheme.onSurface,
         elevation: 0,
+        title: Text(
+          title,
+          style: textTheme.headlineSmall, // Bold_Title3 (20/24, medium)
+        ),
       ),
       body: SafeArea(
         child: Padding(

@@ -15,6 +15,7 @@ class ErrorView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return Center(
       child: ConstrainedBox(
@@ -23,8 +24,7 @@ class ErrorView extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: scheme.surfaceVariant,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: scheme.outline),
+            borderRadius: BorderRadius.circular(12),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -32,18 +32,13 @@ class ErrorView extends StatelessWidget {
               Text(
                 title,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  color: scheme.onSurface,
-                  fontWeight: FontWeight.w700,
-                ),
+                style: textTheme.headlineMedium, // Bold_Title2 (22/28, bold)
               ),
               const SizedBox(height: 8),
               Text(
                 description,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: scheme.onSurface,
-                ),
+                style: textTheme.bodyLarge, // Regular_Text (16/22)
               ),
               const SizedBox(height: 16),
               SizedBox(
@@ -58,7 +53,10 @@ class ErrorView extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  child: const Text('Обновить'),
+                  child: Text(
+                    'Обновить',
+                    style: textTheme.titleMedium, // Bold_Text (16/22, medium)
+                  ),
                 ),
               ),
             ],
