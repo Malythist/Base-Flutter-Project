@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-
+import '../../../../core/data/base_remote_data_source.dart';
 import '../../../../core/network/api_config.dart';
-import '../../../../core/extensions/api_config_extensions.dart';
 import '../dto/example_item_dto.dart';
 
 abstract class ExampleRemoteDataSource {
@@ -10,27 +9,30 @@ abstract class ExampleRemoteDataSource {
 }
 
 @LazySingleton(as: ExampleRemoteDataSource)
-class ExampleRemoteDataSourceImpl implements ExampleRemoteDataSource {
-  final Dio _dio;
-  final ApiConfig _config;
-
-  ExampleRemoteDataSourceImpl(this._dio, this._config);
+class ExampleRemoteDataSourceImpl extends BaseRemoteDataSource
+    implements ExampleRemoteDataSource {
 
   static const String API_METHOD = '/todos';
 
+  ExampleRemoteDataSourceImpl(
+      Dio dio,
+      ApiConfig apiConfig,
+      ) : super(dio, apiConfig);
+
   @override
   Future<List<ExampleItemDto>> getItems() async {
-    final url = _config.buildUrl(API_METHOD);
+    final response = await getRequest(API_METHOD);
 
-    final res = await _dio.get(url);
+    final List<Map<String, dynamic>> rawItems =
+    (response.data as List).cast<Map<String, dynamic>>();
 
-    final list = (res.data as List).cast<Map<String, dynamic>>();
-
-    return list
-        .map((e) => ExampleItemDto(
-      id: e['id'] as int,
-      title: e['title'] as String,
-    ))
+    return rawItems
+        .map(
+          (item) => ExampleItemDto(
+        id: item['id'] as int,
+        title: item['title'] as String,
+      ),
+    )
         .toList();
   }
 }
