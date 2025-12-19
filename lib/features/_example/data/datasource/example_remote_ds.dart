@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+
 import '../../../../core/data/base_remote_data_source.dart';
 import '../../../../core/network/api_config.dart';
 import '../dto/example_item_dto.dart';
@@ -9,9 +10,9 @@ abstract class ExampleRemoteDataSource {
 }
 
 @LazySingleton(as: ExampleRemoteDataSource)
-class ExampleRemoteDataSourceImpl extends BaseRemoteDataSource
+class ExampleRemoteDataSourceImpl
+    extends BaseRemoteDataSource
     implements ExampleRemoteDataSource {
-
   static const String API_METHOD = '/todos';
 
   ExampleRemoteDataSourceImpl(
@@ -21,10 +22,7 @@ class ExampleRemoteDataSourceImpl extends BaseRemoteDataSource
 
   @override
   Future<List<ExampleItemDto>> getItems() async {
-    final response = await getRequest(API_METHOD);
-
-    final List<Map<String, dynamic>> rawItems =
-    (response.data as List).cast<Map<String, dynamic>>();
+    final rawItems = await getListJson(API_METHOD);
 
     return rawItems
         .map(
