@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../core/extensions/theme_extensions.dart';
 
 class ErrorView extends StatelessWidget {
   final String title;
@@ -14,16 +15,13 @@ class ErrorView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
-
     return Center(
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 520),
         child: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: scheme.surfaceVariant,
+            color: context.colors.surfaceVariant,
             borderRadius: BorderRadius.circular(12),
           ),
           child: Column(
@@ -32,13 +30,13 @@ class ErrorView extends StatelessWidget {
               Text(
                 title,
                 textAlign: TextAlign.center,
-                style: textTheme.headlineMedium, // Bold_Title2 (22/28, bold)
+                style: context.text.headlineMedium,
               ),
               const SizedBox(height: 8),
               Text(
                 description,
                 textAlign: TextAlign.center,
-                style: textTheme.bodyLarge, // Regular_Text (16/22)
+                style: context.text.bodyLarge,
               ),
               const SizedBox(height: 16),
               SizedBox(
@@ -46,8 +44,8 @@ class ErrorView extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: onRefresh,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: scheme.primary,
-                    foregroundColor: scheme.onPrimary,
+                    backgroundColor: context.colors.primary,
+                    foregroundColor: context.colors.onPrimary,
                     padding: const EdgeInsets.symmetric(vertical: 12),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -55,7 +53,7 @@ class ErrorView extends StatelessWidget {
                   ),
                   child: Text(
                     'Обновить',
-                    style: textTheme.titleMedium, // Bold_Text (16/22, medium)
+                    style: context.text.titleMedium,
                   ),
                 ),
               ),

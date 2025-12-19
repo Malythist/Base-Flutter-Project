@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/network/api_config.dart';
+import '../../../../core/extensions/api_config_extensions.dart';
 import '../dto/example_item_dto.dart';
 
 abstract class ExampleRemoteDataSource {
@@ -19,7 +20,8 @@ class ExampleRemoteDataSourceImpl implements ExampleRemoteDataSource {
 
   @override
   Future<List<ExampleItemDto>> getItems() async {
-    final url = _config.baseUrl + API_METHOD;
+    final url = _config.buildUrl(API_METHOD);
+
     final res = await _dio.get(url);
 
     final list = (res.data as List).cast<Map<String, dynamic>>();
@@ -28,6 +30,7 @@ class ExampleRemoteDataSourceImpl implements ExampleRemoteDataSource {
         .map((e) => ExampleItemDto(
       id: e['id'] as int,
       title: e['title'] as String,
-    )).toList();
+    ))
+        .toList();
   }
 }

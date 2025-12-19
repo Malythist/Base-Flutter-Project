@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../core/extensions/theme_extensions.dart';
 
 class AppScaffold extends StatelessWidget {
   final String title;
@@ -14,18 +15,15 @@ class AppScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
-
     return Scaffold(
-      backgroundColor: scheme.background,
+      backgroundColor: context.colors.background,
       appBar: AppBar(
-        backgroundColor: scheme.surface,
-        foregroundColor: scheme.onSurface,
+        backgroundColor: context.colors.surface,
+        foregroundColor: context.colors.onSurface,
         elevation: 0,
         title: Text(
           title,
-          style: textTheme.headlineSmall, // Bold_Title3 (20/24, medium)
+          style: context.text.headlineSmall,
         ),
       ),
       body: SafeArea(
