@@ -10,7 +10,7 @@ class AppScaffold extends StatelessWidget {
     super.key,
     required this.title,
     required this.body,
-    this.padding = const EdgeInsets.all(16),
+    this.padding = EdgeInsets.zero,
   });
 
   @override
