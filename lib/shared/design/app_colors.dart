@@ -4,14 +4,14 @@ class AppColors {
   const AppColors._();
 
   // Light
-  static const Color primaryLight = Color(0xFF6750A4);
-  static const Color secondaryLight = Color(0xFF625B71);
-  static const Color tertiaryLight = Color(0xFF7D5260);
+  static const Color primaryLight = Color(0xFF6200EE);
+  static const Color secondaryLight = Color(0xFF6200EE);
+  static const Color tertiaryLight = Color(0xFFA06BEE);
 
   // Dark
-  static const Color primaryDark = Color(0xFFD0BCFF);
-  static const Color secondaryDark = Color(0xFFCCC2DC);
-  static const Color tertiaryDark = Color(0xFFEFB8C8);
+  static const Color primaryDark = Color(0xFF954DFF);
+  static const Color secondaryDark = Color(0xFF954DFF);
+  static const Color tertiaryDark = Color(0xFFB893EF);
 
   // Light theme grays
   static const Color grayLight50  = Color(0xFFF8F9FA);
