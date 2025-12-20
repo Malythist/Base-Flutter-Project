@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/extensions/theme_extensions.dart';
+import '../design/app_spacing.dart';
 
 class ErrorView extends StatelessWidget {
   final String title;
@@ -19,9 +20,9 @@ class ErrorView extends StatelessWidget {
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 520),
         child: Container(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(AppSpacing.defaultPadding),
           decoration: BoxDecoration(
-            color: context.colors.surfaceVariant,
+            color: context.colors.background,
             borderRadius: BorderRadius.circular(12),
           ),
           child: Column(
@@ -38,7 +39,7 @@ class ErrorView extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: context.text.bodyLarge,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: AppSpacing.defaultPadding),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -46,14 +47,16 @@ class ErrorView extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: context.colors.primary,
                     foregroundColor: context.colors.onPrimary,
-                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    minimumSize: const Size.fromHeight(AppSpacing.buttonHeight),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: AppSpacing.buttonBorderRadius,
                     ),
                   ),
                   child: Text(
                     'Обновить',
-                    style: context.text.titleMedium,
+                    style: context.text.titleMedium?.copyWith(
+                      color: context.colors.onPrimary,
+                    ),
                   ),
                 ),
               ),
