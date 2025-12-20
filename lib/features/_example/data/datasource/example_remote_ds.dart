@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/data/base_remote_data_source.dart';
 import '../../../../core/network/api_config.dart';
+import '../../../../core/network/api_paths.dart';
 import '../dto/example_item_dto.dart';
 
 abstract class ExampleRemoteDataSource {
@@ -10,10 +11,9 @@ abstract class ExampleRemoteDataSource {
 }
 
 @LazySingleton(as: ExampleRemoteDataSource)
-class ExampleRemoteDataSourceImpl
-    extends BaseRemoteDataSource
+class ExampleRemoteDataSourceImpl extends BaseRemoteDataSource
     implements ExampleRemoteDataSource {
-  static const String API_METHOD = '/todos';
+  static const String API_METHOD = ApiPaths.todos;
 
   ExampleRemoteDataSourceImpl(
       Dio dio,
@@ -24,13 +24,6 @@ class ExampleRemoteDataSourceImpl
   Future<List<ExampleItemDto>> getItems() async {
     final rawItems = await getListJson(API_METHOD);
 
-    return rawItems
-        .map(
-          (item) => ExampleItemDto(
-        id: item['id'] as int,
-        title: item['title'] as String,
-      ),
-    )
-        .toList();
+    return rawItems.map(ExampleItemDto.fromJson).toList();
   }
 }
