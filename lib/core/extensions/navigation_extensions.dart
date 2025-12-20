@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 extension NavigationExtensions on BuildContext {
+  // Возврат результата в предыдущий экран
   void pop<T extends Object?>([T? result]) {
-    Navigator.of(this).pop(result);
+    GoRouter.of(this).pop(result);
   }
 
-  Future<T?> push<T>(Widget page) {
-    return Navigator.of(this).push(
-      MaterialPageRoute(builder: (_) => page),
-    );
+  // Переход на экран по пути с передачей аргументов (extra)
+  // и ожиданием результата
+  Future<T?> pushPath<T extends Object?>(String location, {Object? extra}) {
+    return GoRouter.of(this).push<T>(location, extra: extra);
   }
 }
