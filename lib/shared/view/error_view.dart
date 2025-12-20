@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/extensions/theme_extensions.dart';
 import '../design/app_spacing.dart';
+import 'custom_button.dart';
 
 class ErrorView extends StatelessWidget {
   final String title;
@@ -40,25 +41,9 @@ class ErrorView extends StatelessWidget {
                 style: context.text.bodyLarge,
               ),
               const SizedBox(height: AppSpacing.defaultPadding),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: onRefresh,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: context.colors.primary,
-                    foregroundColor: context.colors.onPrimary,
-                    minimumSize: const Size.fromHeight(AppSpacing.buttonHeight),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: AppSpacing.buttonBorderRadius,
-                    ),
-                  ),
-                  child: Text(
-                    'Обновить',
-                    style: context.text.titleMedium?.copyWith(
-                      color: context.colors.onPrimary,
-                    ),
-                  ),
-                ),
+              CustomButton(
+                title: 'Обновить',
+                onPressed: onRefresh,
               ),
             ],
           ),
