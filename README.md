@@ -48,9 +48,10 @@ All Flutter code is located inside the `lib` folder. Under it you will find 4 pa
    flutter pub get
    ```
 
-##### Important notes for Windows users!
+### Important notes for Windows users!
 
 The project must be located in a path without non-ASCII characters (no Cyrillic, spaces are fine). Avoid placing the project inside Documents, especially if it is managed by OneDrive or Windows Controlled Folder Access. These restrictions are important for Flutter code generation, asset processing, and shader compilation.
+
 
 
 
