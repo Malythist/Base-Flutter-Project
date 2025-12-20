@@ -18,7 +18,7 @@ class ExampleScreen extends ConsumerWidget {
     final controller = ref.read(exampleControllerProvider.notifier);
 
     return AppScaffold(
-      title: '_example',
+      title: 'Example',
       body: async.whenWidget(
         loading: const LoadingView(),
         error: (e) {
