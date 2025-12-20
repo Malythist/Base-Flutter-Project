@@ -19,11 +19,11 @@ All Flutter code is located inside the `lib` folder. Under it you will find 4 pa
 
 ### Tech Stack
 
-- **State Management**: [Riverpod](https://riverpod.dev/) (AsyncNotifier) — for application state management.
-- **Dependency Injection**: [GetIt](https://pub.dev/packages/get_it) + [Injectable](https://pub.dev/packages/injectable) — for dependency injection and DI code generation.
-- **Networking**: [Dio](https://pub.dev/packages/dio) — a powerful HTTP client for Dart.
-- **Architecture**: Clean Architecture (Data, Domain, and Presentation layers).
-- **Design System**: Custom design system (themes, colors, spacing) based on Material 3.
+- State Management: [Riverpod](https://riverpod.dev/) (AsyncNotifier) — for application state management.
+- Dependency Injection: [GetIt](https://pub.dev/packages/get_it) + [Injectable](https://pub.dev/packages/injectable) — for dependency injection and DI code generation.
+- Networking: [Dio](https://pub.dev/packages/dio) — HTTP client for Dart.
+- Architecture: Clean Architecture (Data, Domain, and Presentation layers).
+- Design System: Custom design system (themes, colors, spacing) based on Material 3.
 
 ### Build and requirements:
 
@@ -51,6 +51,7 @@ All Flutter code is located inside the `lib` folder. Under it you will find 4 pa
 ##### Important notes for Windows users!
 
 The project must be located in a path without non-ASCII characters (no Cyrillic, spaces are fine). Avoid placing the project inside Documents, especially if it is managed by OneDrive or Windows Controlled Folder Access. These restrictions are important for Flutter code generation, asset processing, and shader compilation.
+
 
 
 
