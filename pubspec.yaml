@@ -48,6 +48,7 @@ dev_dependencies:
   injectable_generator: any
   floor_generator: any
   flutter_lints: ^6.0.0
+  go_router_builder: ^2.7.0
 
 flutter:
   uses-material-design: true
