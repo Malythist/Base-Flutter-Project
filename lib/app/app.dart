@@ -1,54 +1,45 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/services.dart';
+import '../core/extensions/theme_extensions.dart';
 import '../shared/design/app_theme.dart';
 import 'navigation/router.dart';
 
-class App extends ConsumerStatefulWidget { // Меняем на ConsumerStatefulWidget для работы с жизненным циклом
+class App extends StatelessWidget {
   const App({super.key});
 
   @override
-  ConsumerState<App> createState() => _AppState();
-}
-
-class _AppState extends ConsumerState<App> {
-  late final AppLifecycleListener _lifecycleListener;
-
-  @override
-  void initState() {
-    super.initState();
-
-    // Инициализируем слушатель жизненного цикла
-    _lifecycleListener = AppLifecycleListener(
-      onResume: () => debugPrint('App Resumed'),
-      onInactive: () => debugPrint('App Inactive'),
-      onPause: () => debugPrint('App Paused'),
-      onDetach: () => debugPrint('App Detached'),
-      onRestart: () => debugPrint('App Restarted'),
-      // Можно добавить обработку закрытия приложения (например, для сохранения логов)
-      onExitRequested: () async {
-        debugPrint('App Exit Requested');
-        return AppExitResponse.exit;
-      },
-    );
-  }
-
-  @override
-  void dispose() {
-    _lifecycleListener.dispose(); // Обязательно освобождаем ресурсы
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final router = ref.watch(routerProvider);
-
     return MaterialApp.router(
       routerConfig: router,
       theme: AppTheme.light(),
       darkTheme: AppTheme.dark(),
       themeMode: ThemeMode.system,
+      builder: (context, child) {
+        final theme = Theme.of(context);
+        final isDark = theme.brightness == Brightness.dark;
+
+        final navBarColor = context.colors.surface;
+
+        final style = SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
+          statusBarBrightness: isDark ? Brightness.dark : Brightness.light,
+
+          systemNavigationBarColor: navBarColor,
+          systemNavigationBarIconBrightness:
+          isDark ? Brightness.light : Brightness.dark,
+
+          systemNavigationBarContrastEnforced: false,
+          systemNavigationBarDividerColor: navBarColor,
+        );
+
+        SystemChrome.setSystemUIOverlayStyle(style);
+
+        return AnnotatedRegion<SystemUiOverlayStyle>(
+          value: style,
+          child: child ?? const SizedBox.shrink(),
+        );
+      },
     );
   }
 }
