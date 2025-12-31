@@ -110,8 +110,7 @@ class _BottomNavButton extends StatelessWidget {
         final w = constraints.maxWidth;
         final h = constraints.maxHeight;
 
-        final double radius = 18;
-
+        final double radius = w / 4;
 
         return SizedBox.expand(
           child: Material(
