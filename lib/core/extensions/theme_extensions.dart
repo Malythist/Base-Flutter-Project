@@ -18,9 +18,14 @@ class AppThemeColors {
 
   Color get primary => _scheme.primary;
   Color get onPrimary => _scheme.onPrimary;
-  Color get background => _scheme.background;
-  Color get surface => _scheme.surface;
-  Color get onSurface => _scheme.onSurface;
+  Color get background => _isDark ? AppColors.pageBackgroundDark : AppColors.pageBackgroundLight;
+  Color get cardViewBackground => _isDark ? AppColors.cardViewDark : AppColors.cardViewLight;
+  Color get surface => _isDark ? AppColors.pageBackgroundDark : AppColors.pageBackgroundLight;
+  Color get onSurface => _isDark ? AppColors.pageBackgroundDark : AppColors.pageBackgroundLight;
+
+  Color get textPrimary => _isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight;
+  Color get textSecondary => _isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight;
+  Color get textTertiary => _isDark ? AppColors.textTertiaryDark : AppColors.textTertiaryLight;
 
   Color get surfaceVariant => _scheme.surfaceContainerHighest;
 

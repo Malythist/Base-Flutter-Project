@@ -48,7 +48,7 @@ class AppScaffold extends StatelessWidget {
             Container(
               height: bottomInset,
               width: double.infinity,
-              color: context.colors.surface,
+              color: context.colors.cardViewBackground,
             ),
         ],
       ),

@@ -34,9 +34,9 @@ class AppBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dividerColor = context.colors.gray20;
-    final inactiveColor = context.colors.gray40;
+    final inactiveColor = context.colors.gray600;
     final activeColor = context.colors.primary;
-    final surfaceColor = backgroundColor ?? context.colors.surface;
+    final surfaceColor = backgroundColor ?? context.colors.cardViewBackground;
 
     final screenWidth = MediaQuery.sizeOf(context).width;
     final itemWidth = items.isEmpty ? 0.0 : screenWidth / items.length;

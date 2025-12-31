@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/error/ui_exception.dart';
 import '../../../../core/extensions/async_value_extensions.dart';
+import '../../../../core/extensions/text_color_extension.dart';
 import '../../../../core/extensions/theme_extensions.dart';
 import '../../../../shared/design/app_spacing.dart';
 import '../../../../shared/view/app_scaffold.dart';
@@ -104,7 +105,7 @@ class _ItemsList extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: spacing),
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                  color: context.colors.surfaceVariant,
+                  color: context.colors.cardViewBackground,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: ListTile(
@@ -114,13 +115,11 @@ class _ItemsList extends StatelessWidget {
                   ),
                   title: Text(
                     item.title,
-                    style: context.text.titleMedium,
+                    style: context.text.titleMedium.color(context.colors.textPrimary)
                   ),
                   subtitle: Text(
                     'id: ${item.id}',
-                    style: context.text.labelMedium?.copyWith(
-                      color: context.colors.onSurface.withOpacity(0.7),
-                    ),
+                    style: context.text.labelMedium.color(context.colors.textTertiary),
                   ),
                 ),
               ),

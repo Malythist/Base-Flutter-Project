@@ -13,6 +13,21 @@ class AppColors {
   static const Color secondaryDark = Color(0xFF954DFF);
   static const Color tertiaryDark = Color(0xFFB893EF);
 
+  //Background
+  static const Color pageBackgroundLight = Color(0xFFFFFFFF);
+  static const Color pageBackgroundDark = Color(0xFF2F2E33);
+  static const Color cardViewLight = Color(0xFFFFFFFF);
+  static const Color cardViewDark = Color(0xFF3C3C43);
+
+  //Text
+  static const Color textPrimaryLight = Color(0xFF1A1A1D);
+  static const Color textSecondaryLight = Color(0xB318181A);
+  static const Color textTertiaryLight = Color(0x8018181A);
+
+  static const Color textPrimaryDark = Color(0xFFFFFFFF);
+  static const Color textSecondaryDark = Color(0xB3FFFFFF);
+  static const Color textTertiaryDark = Color(0x80FFFFFF);
+
   // Light theme grays
   static const Color grayLight50  = Color(0xFFF8F9FA);
   static const Color grayLight100 = Color(0xFFF1F3F5);

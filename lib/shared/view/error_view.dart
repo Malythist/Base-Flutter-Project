@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../core/extensions/text_color_extension.dart';
 import '../../core/extensions/theme_extensions.dart';
 import '../design/app_spacing.dart';
 import 'custom_button.dart';
@@ -32,13 +33,13 @@ class ErrorView extends StatelessWidget {
               Text(
                 title,
                 textAlign: TextAlign.center,
-                style: context.text.headlineMedium,
+                style: context.text.headlineMedium.color(context.colors.textPrimary),
               ),
               const SizedBox(height: 8),
               Text(
                 description,
                 textAlign: TextAlign.center,
-                style: context.text.bodyLarge,
+                style: context.text.bodyLarge.color(context.colors.textSecondary),
               ),
               const SizedBox(height: AppSpacing.defaultPadding),
               CustomButton(
