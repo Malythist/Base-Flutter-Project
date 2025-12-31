@@ -8,27 +8,71 @@ import '../../../../shared/design/app_spacing.dart';
 import '../../../../shared/view/app_scaffold.dart';
 import '../../../../shared/view/error_view.dart';
 import '../../../../shared/view/loading_view.dart';
+import '../../../../shared/view/app_bottom_navigation_bar.dart';
 import '../../domain/entity/example_item.dart';
 import '../controller/example_controller.dart';
 
-class ExampleScreen extends ConsumerWidget {
+class ExampleScreen extends ConsumerStatefulWidget {
   const ExampleScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ExampleScreen> createState() => _ExampleScreenState();
+}
+
+class _ExampleScreenState extends ConsumerState<ExampleScreen> {
+  int _selectedIndex = 0;
+
+  static const List<AppBottomNavItem> _items = [
+    AppBottomNavItem(icon: Icons.list_alt_outlined, label: 'List'),
+    AppBottomNavItem(icon: Icons.search_outlined, label: 'Search'),
+    AppBottomNavItem(icon: Icons.settings_outlined, label: 'Settings'),
+  ];
+
+  void _onNavChanged(int index) {
+    if (_selectedIndex == index) return;
+
+    setState(() => _selectedIndex = index);
+
+    //context.go('/someRoute') или navigatorKey.currentState?.push...
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final asyncValue = ref.watch(exampleControllerProvider);
     final controller = ref.read(exampleControllerProvider.notifier);
 
     return AppScaffold(
       title: 'Example',
-      body: asyncValue.whenWidget(
-        loading: const LoadingView(),
-        error: (error) => _ErrorContent(
-          error: error,
-          onRetry: controller.retry,
-        ),
-        data: (items) => _ItemsList(items: items),
+      body: _buildBody(asyncValue: asyncValue, controller: controller),
+      bottomNavigationBar: AppBottomNavigationBar(
+        items: _items,
+        selectedIndex: _selectedIndex,
+        onChanged: _onNavChanged,
       ),
+    );
+  }
+
+  Widget _buildBody({
+    required AsyncValue<List<ExampleItem>> asyncValue,
+    required dynamic controller,
+  }) {
+    return asyncValue.whenWidget(
+      loading: const LoadingView(),
+      error: (error) => _ErrorContent(
+        error: error,
+        onRetry: controller.retry,
+      ),
+      data: (items) {
+        if (_selectedIndex == 0) {
+          return _ItemsList(items: items);
+        }
+
+        if (_selectedIndex == 1) {
+          return const Center(child: Text('Search tab'));
+        }
+
+        return const Center(child: Text('Settings tab'));
+      },
     );
   }
 }
@@ -45,7 +89,7 @@ class _ItemsList extends StatelessWidget {
     const spacing = AppSpacing.defaultPadding;
 
     return ListView.builder(
-      padding: EdgeInsets.zero, // без внешних отступов у списка
+      padding: EdgeInsets.zero,
       itemCount: items.length,
       itemBuilder: (_, index) {
         final item = items[index];
