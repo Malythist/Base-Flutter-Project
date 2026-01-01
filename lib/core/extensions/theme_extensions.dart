@@ -29,16 +29,14 @@ class AppThemeColors {
 
   Color get surfaceVariant => _scheme.surfaceContainerHighest;
 
-  Color get gray50 => _isDark ? AppColors.grayDark50 : AppColors.grayLight50;
-  Color get gray100 => _isDark ? AppColors.grayDark100 : AppColors.grayLight100;
-  Color get gray200 => _isDark ? AppColors.grayDark200 : AppColors.grayLight200;
-  Color get gray300 => _isDark ? AppColors.grayDark300 : AppColors.grayLight300;
-  Color get gray400 => _isDark ? AppColors.grayDark400 : AppColors.grayLight400;
-  Color get gray500 => _isDark ? AppColors.grayDark500 : AppColors.grayLight500;
-  Color get gray600 => _isDark ? AppColors.grayDark600 : AppColors.grayLight600;
-
-  Color get gray20 => gray200;
-  Color get gray40 => gray500;
+  Color get gray0 => _isDark ? AppColors.gray0Dark : AppColors.gray0Light;
+  Color get gray20 => _isDark ? AppColors.gray20Dark : AppColors.gray20Light;
+  Color get gray30 => _isDark ? AppColors.gray30Dark : AppColors.gray30Light;
+  Color get gray40 => _isDark ? AppColors.gray40Dark : AppColors.gray40Light;
+  Color get gray50 => _isDark ? AppColors.gray50Dark : AppColors.gray50Light;
+  Color get gray60 => _isDark ? AppColors.gray60Dark : AppColors.gray60Light;
+  Color get gray80 => _isDark ? AppColors.gray80Dark : AppColors.gray80Light;
+  Color get gray100 => _isDark ? AppColors.gray100Dark : AppColors.gray100Light;
 }
 
 class AppThemeText {

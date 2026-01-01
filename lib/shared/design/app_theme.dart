@@ -14,12 +14,12 @@ class AppTheme {
       onSecondary: Colors.white,
       tertiary: AppColors.tertiaryLight,
       onTertiary: Colors.white,
-      background: AppColors.grayLight50,
+      background: AppColors.gray0Light,
       onBackground: Colors.black,
-      surface: AppColors.grayLight100,
+      surface: AppColors.gray20Light,
       onSurface: Colors.black,
-      surfaceVariant: AppColors.grayLight200,
-      outline: AppColors.grayLight400,
+      surfaceVariant: AppColors.gray40Light,
+      outline: AppColors.gray40Light,
       error: Colors.red,
       onError: Colors.white,
     );
@@ -36,7 +36,7 @@ class AppTheme {
         surfaceTintColor: Colors.transparent,
         centerTitle: false,
       ),
-      dividerColor: AppColors.grayLight300,
+      dividerColor: AppColors.gray30Light,
       textTheme: AppTypography.textTheme(onSurface: scheme.onSurface),
     );
   }
@@ -50,12 +50,12 @@ class AppTheme {
       onSecondary: Colors.black,
       tertiary: AppColors.tertiaryDark,
       onTertiary: Colors.black,
-      background: AppColors.grayDark50,
+      background: AppColors.gray0Dark,
       onBackground: Colors.white,
-      surface: AppColors.grayDark100,
+      surface: AppColors.gray20Dark,
       onSurface: Colors.white,
-      surfaceVariant: AppColors.grayDark200,
-      outline: AppColors.grayDark400,
+      surfaceVariant: AppColors.gray20Dark,
+      outline: AppColors.gray40Dark,
       error: Colors.redAccent,
       onError: Colors.black,
     );
@@ -72,7 +72,7 @@ class AppTheme {
         surfaceTintColor: Colors.transparent,
         centerTitle: false,
       ),
-      dividerColor: AppColors.grayDark300,
+      dividerColor: AppColors.gray30Dark,
       textTheme: AppTypography.textTheme(onSurface: scheme.onSurface),
     );
   }

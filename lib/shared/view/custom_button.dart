@@ -18,8 +18,8 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isEnabled = enabled && onPressed != null;
-    final bgColor = isEnabled ? context.colors.primary : AppColors.grayLight400; // gray_40
-    final fgColor = isEnabled ? context.colors.onPrimary : AppColors.grayLight600; // gray_60
+    final bgColor = isEnabled ? context.colors.primary : context.colors.gray40;
+    final fgColor = isEnabled ? context.colors.onPrimary : context.colors.gray60;
 
     return SizedBox(
       width: double.infinity,
